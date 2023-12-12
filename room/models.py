@@ -7,8 +7,14 @@ class Guest(models.Model):
     room_id = models.IntegerField()
     date_arrived = models.DateField(auto_now=True)
 
+    def __str__(self):
+        return self.guest_name
+
 class Room(models.Model):
     room_type = models.CharField(max_length=20)
     price = models.IntegerField()
     occupancy = models.IntegerField()
     availability = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.room_type
