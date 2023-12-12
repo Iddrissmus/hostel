@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='d-flex justify-content-center align-content-center text-center '>
+  
+<main class="form-signin w-100 m-auto">
+<form action='' method='post' class="d-flex flex-column align-items-center">
+  {% csrf_token %}
+  {% comment %} <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> {% endcomment %}
+  <h1 class="h3 mb-3 text-start fw-normal">Log in</h1>
+
+  <div class="form-floating col-lg-4">
+    <input name='username' type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+    <label for="floatingInput">Username</label>
+  </div>
+  <div class="form-floating mt-2 col-lg-4">
+    <input name='password' type="password" class="form-control" id="floatingPassword" placeholder="Password">
+    <label for="floatingPassword">Password</label>
+  </div>
+
+  <button class="btn btn-primary mt-2 py-2 col-lg-4" type="submit">Sign in</button>
+</form>
+
+<div>
+  {% for message in messages %}
+  <h3>{{message}}</h3>
+  {% endfor %}
+</div>
+
+<p>No account? <a class="nav-link text-primary" href="{% url "register" %}">Register</a></p>
+</main>
+</div>
+
+
+{% endblock content %}

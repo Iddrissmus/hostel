@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='d-flex justify-content-center align-content-center text-center '>
+  
+<main class="form-signin w-100 m-auto">
+<form action='' method='post' class="d-flex flex-column align-items-center">
+  {% csrf_token %}
+  <h1 class="h3 mb-3 text-start fw-normal">Sign Up</h1>
+
+  <div class="form-floating col-lg-4">
+    <input name='username' type="text" class="form-control" id="floatingInput" placeholder="Username">
+    <label for="floatingInput">Username</label>
+  </div>
+  <div class="form-floating mt-2 col-lg-4">
+    <input name='password1' type="password" class="form-control" id="floatingPassword" placeholder="Password">
+    <label for="floatingPassword">Password</label>
+  </div>
+  <div class="form-floating mt-2 col-lg-4">
+    <input name='password2' type="password" class="form-control" id="floatingPassword" placeholder="Confirm Password">
+    <label for="floatingPassword">Confirm Password</label>
+  </div>
+
+  <button class="btn btn-primary mt-2 py-2 col-lg-4" type="submit">Sign Up</button>
+</form>
+
+<div>
+  {% for message in messages %}
+  <h3>{{message}}</h3>
+  {% endfor %}
+</div>
+
+
+</main>
+</div>
+
+
+{% endblock content %}

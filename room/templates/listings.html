@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <div class="row row-cols-2 row-cols-md-3 g-4">
+  {% for room in room_data %}
+    <div class="col">
+      <div class="card">
+        {% load static %}
+        <img
+          src="{% static 'images/listings_image.jpg' %}"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Room Number: {{room.id}}</h5>
+          <p class="card-text">Room Type: {{room.room_type}}</p>
+          <p class="card-text">Occupany:{{room.occupancy}}</p>
+          <p class="card-text">Price:{{room.price}} cedis</p>
+          <p class="card-text">Availability:{{room.availability}}</p>
+        </div>
+        <div
+          class="card-footer col-12 border-0"
+          style="background-color: white"
+        >
+          <button type="button" class="btn btn-primary col-lg-12">View</button>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock content %}
