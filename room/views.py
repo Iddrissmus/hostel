@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import *
@@ -26,9 +26,9 @@ def login(request):
 def home(request):
     try:
         rooms = Room.objects.filter(availability__startswith = 'available')
-        print(rooms)
-        for r in rooms:
-            print(r.availability)
+        # print(rooms)
+        # for r in rooms:
+            # print(r.availability)
         room_data = [
             {
             'room_type': room.room_type,
@@ -43,8 +43,20 @@ def home(request):
         room_data = []
     return render(request, 'base.html', {'room_data': room_data})
 
-def details(request):
-    return render(request, 'details.html')
+def details(request, room_id):
+    try:
+        room = get_object_or_404(Room, id=room_id)
+        room_data = {
+            'room_type': room.room_type,
+            'occupancy': room.occupancy,
+            'price': room.price,
+            'availability': room.availability
+        }
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        room_data = {}
+    
+    return render(request, 'details.html', {'room_data': room_data})
 
 def listings(request):
     try:
