@@ -29,19 +29,19 @@ def home(request):
         # print(rooms)
         # for r in rooms:
             # print(r.availability)
-        room_data = [
-            {
-            'room_type': room.room_type,
-            'occupancy': room.occupancy,
-            'price': room.price,
-            'availability': room.availability
-            } 
-            for room in rooms
-        ]
+        # room_data = [
+        #     {
+        #     'room_type': room.room_type,
+        #     'occupancy': room.occupancy,
+        #     'price': room.price,
+        #     'availability': room.availability
+        #     } 
+        #     for room in rooms
+        # ]
     except Exception as e:
         print(f"An error occurred : {e}")
-        room_data = []
-    return render(request, 'base.html', {'room_data': room_data})
+        # room_data = []
+    return render(request, 'base.html', {'room_data': rooms})
 
 def details(request, room_id):
     try:

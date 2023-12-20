@@ -78,7 +78,7 @@
                       {% load static %}
                       <img src="{% static 'images/listings_image.jpg'%}" alt="">
                       <div class="card-body">
-                        {% comment %} <h5 class="card-title">Room Number: {{room.pk}}</h5> {% endcomment %}
+                        <h5 class="card-title">Room Number: {{room.id}}</h5>
                           <p class="card-text">Room Type: {{room.room_type}}</p>
                           <p class="card-text">Occupany:{{room.occupancy}}</p>
                           <p class="card-text">Price:{{room.price}} cedis</p>
