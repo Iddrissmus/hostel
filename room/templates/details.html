@@ -2,20 +2,20 @@
 
 {% block content %}
 <div class='container-fluid'>
-  <div class="card mx-auto mt-5 col-lg-6 d-flex align-items-center">
+  <div class="card mx-auto mt-5 col-lg-6 d-flex ">
       {% load static %}
       <img src="{% static 'images/unsplash_WQJvWU_HZFo.svg' %}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text"></p>
-        <p class="card-text">Room Type: {{ room_data.room_type }}</p>
-        <p class="card-text">Occupancy: {{ room_data.occupancy }}</p>
-        <p class="card-text">Price: {{ room_data.price }}</p>
-        <p class="card-text">Availability: {{ room_data.availability }}</p>
+        <h5 class="card-title">Room Number: {{ room.id }}</h5>
+        {% comment %} <p class="card-text"></p> {% endcomment %}
+        <p class="card-text">Room Type: {{ room.room_type }}</p>
+        <p class="card-text">Occupancy: {{ room.occupancy }}</p>
+        <p class="card-text">Price: {{ room.price }} cedis</p>
+        <p class="card-text">Availability: {{ room.availability }}</p>
       </div>
-      <div class="card-footer col-12 border-0" style="background-color: white;">
+      {% comment %} <div class="card-footer col-12 border-0" style="background-color: white;">
         <button type="button" class="btn btn-primary col-lg-12">View</button>
-      </div>
+      </div> {% endcomment %}
   </div>
 </div>
 

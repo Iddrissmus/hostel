@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import *
 from django.db import connection
+from django.views import View
 
 # Create your views here.
 
@@ -46,17 +47,18 @@ def home(request):
 def details(request, room_id):
     try:
         room = get_object_or_404(Room, id=room_id)
-        room_data = {
-            'room_type': room.room_type,
-            'occupancy': room.occupancy,
-            'price': room.price,
-            'availability': room.availability
-        }
+        print(room)
+        # room_data = {
+        #     'room_type': room.room_type,
+        #     'occupancy': room.occupancy,
+        #     'price': room.price,
+        #     'availability': room.availability
+        # }
     except Exception as e:
         print(f"An error occurred: {e}")
-        room_data = {}
+        # room_data = {}
     
-    return render(request, 'details.html', {'room_data': room_data})
+    return render(request, 'details.html', {'room_data': room})
 
 def listings(request):
     try:
@@ -108,3 +110,10 @@ def register(request):
     else:
         return render(request, 'register.html')
 
+
+class RoomDetailView(View):
+    template_name = 'details.html'
+    def get(self, request,room_id):
+        room = Room.objects.get(id=room_id)
+        context = {'room':room}
+        return render(request, self.template_name,context)
