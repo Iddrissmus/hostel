@@ -17,7 +17,7 @@ def login(request):
             auth.login(request,user)
             return redirect('listings')
         else:
-            messages.info(request,'Username OR Password is incorrect')
+            messages.error(request,'Username OR Password is incorrect')
             return redirect('login')
 
     else:
@@ -70,6 +70,7 @@ def listings(request):
         #     } 
         #     for room in rooms
         #     ]
+        messages.info(request, "Welcome!")
     except Exception as e:
         print(f"An error occurred : {e}")
         # room_data = []
@@ -78,6 +79,7 @@ def listings(request):
 
 def logout(request):
     auth.logout(request)
+    messages.info(request, "Logout Successfull")
     return redirect('/')
 
 def register(request):
@@ -89,18 +91,19 @@ def register(request):
 
         if password1==password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request,'Username Taken')
+                messages.error(request,'Username Taken! Try again.')
                 return redirect('register')
             else:
                 user = User.objects.create_user(username=username,password=password1)
+                messages.info(request, 'Registration Successful')
                 user.save()
+                auth.login(request,user)
                 print('user created')
-                return redirect('login')
+                return redirect('home')
 
         else:
-            messages.info(request,'Password not matching')
+            messages.error(request,'Password not matching! Try again')
             return redirect('register')
-        return redirect('listings')
 
     else:
         return render(request, 'register.html')
