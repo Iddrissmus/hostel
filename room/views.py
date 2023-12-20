@@ -61,20 +61,20 @@ def details(request, room_id):
 def listings(request):
     try:
         rooms = Room.objects.all()
-        room_data = [
-            {
-            'room_type': room.room_type,
-            'occupancy': room.occupancy,
-            'price': room.price,
-            'availability': room.availability
-            } 
-            for room in rooms
-            ]
+        # room_data = [
+        #     {
+        #     'room_type': room.room_type,
+        #     'occupancy': room.occupancy,
+        #     'price': room.price,
+        #     'availability': room.availability
+        #     } 
+        #     for room in rooms
+        #     ]
     except Exception as e:
         print(f"An error occurred : {e}")
-        room_data = []
+        # room_data = []
 
-    return render(request, 'listings.html', {'room_data': room_data})
+    return render(request, 'listings.html', {'room_data': rooms})
 
 def logout(request):
     auth.logout(request)
