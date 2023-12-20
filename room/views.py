@@ -27,55 +27,16 @@ def login(request):
 def home(request):
     try:
         rooms = Room.objects.filter(availability__startswith = 'available')
-        # print(rooms)
-        # for r in rooms:
-            # print(r.availability)
-        # room_data = [
-        #     {
-        #     'room_type': room.room_type,
-        #     'occupancy': room.occupancy,
-        #     'price': room.price,
-        #     'availability': room.availability
-        #     } 
-        #     for room in rooms
-        # ]
     except Exception as e:
         print(f"An error occurred : {e}")
-        # room_data = []
     return render(request, 'base.html', {'room_data': rooms})
-
-def details(request, room_id):
-    try:
-        room = get_object_or_404(Room, id=room_id)
-        print(room)
-        # room_data = {
-        #     'room_type': room.room_type,
-        #     'occupancy': room.occupancy,
-        #     'price': room.price,
-        #     'availability': room.availability
-        # }
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        # room_data = {}
-    
-    return render(request, 'details.html', {'room_data': room})
 
 def listings(request):
     try:
         rooms = Room.objects.all()
-        # room_data = [
-        #     {
-        #     'room_type': room.room_type,
-        #     'occupancy': room.occupancy,
-        #     'price': room.price,
-        #     'availability': room.availability
-        #     } 
-        #     for room in rooms
-        #     ]
         messages.info(request, "Welcome!")
     except Exception as e:
         print(f"An error occurred : {e}")
-        # room_data = []
 
     return render(request, 'listings.html', {'room_data': rooms})
 
@@ -109,7 +70,6 @@ def register(request):
 
     else:
         return render(request, 'register.html')
-
 
 class RoomDetailView(View):
     template_name = 'details.html'
