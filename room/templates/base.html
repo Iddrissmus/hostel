@@ -73,25 +73,24 @@
           
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                   {% for room in room_data %}
-                  <div class="col">
-                    <div class="card shadow-sm">
-                      {% load static %}
-                      <img src="{% static 'images/listings_image.jpg'%}" alt="">
-                      <div class="card-body">
-                        <h5 class="card-title">Room Number: {{room.id}}</h5>
-                          <p class="card-text">Room Type: {{room.room_type}}</p>
-                          <p class="card-text">Occupany:{{room.occupancy}}</p>
-                          <p class="card-text">Price:{{room.price}} cedis</p>
-                          <p class="card-text">Availability:{{room.availability}}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="card-footer col-12 border-0" style="background-color: white;">
-                            <a href="{% url 'room_detail' room.id %}" class="btn btn-primary col-lg-12">Details</a>
-                            {% comment %} <a href="{% url "details" room_id=room.id %}" class="btn btn-primary col-lg-12">Details</a> {% endcomment %}
+                    <div class="col">
+                      <div class="card shadow-sm">
+                        {% load static %}
+                        <img src="{% static 'images/listings_image.jpg'%}" alt="">
+                        <div class="card-body">
+                          <h5 class="card-title">Room Number: {{room.id}}</h5>
+                            <p class="card-text">Room Type: {{room.room_type}}</p>
+                            <p class="card-text">Occupany:{{room.occupancy}}</p>
+                            <p class="card-text">Price:{{room.price}} cedis</p>
+                            <p class="card-text">Availability:{{room.availability}}</p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="card-footer col-12 border-0" style="background-color: white;">
+                              <a href="{% url 'room_detail' room.id %}" class="btn btn-primary col-lg-12">Details</a>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
                   {% endfor %}
                 </div>
 
