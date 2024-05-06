@@ -9,5 +9,8 @@ urlpatterns = [
     path('login/', views.login , name='login'),
     path('logout/', views.logout , name='logout'),
     path('register/', views.register, name='register'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('length/',views.LengthDetails.as_view(), name = 'length')
+
 
 ]
